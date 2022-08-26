@@ -12,19 +12,14 @@ function App() {
     setButtonState(buttonStateValues.loading);
     //console.log("loading");
 
-    const response = await fetch("/api/randomBoolean").catch((error) =>
-      console.log(error)
+    const response = await fetch("/api/randomBoolean").catch((errorMsg) =>
+      console.log(errorMsg)
     );
     const result = await response.json();
 
-    if (result.message == true) {
-      setButtonState(buttonStateValues.success);
-      //console.log("success!");
-    } else {
-      setButtonState(buttonStateValues.error);
-      //console.log("failed!");
-    }
-    //console.log(result.message);
+    result.message
+      ? setButtonState(buttonStateValues.success)
+      : setButtonState(buttonStateValues.error);
   }, []);
 
   return (
