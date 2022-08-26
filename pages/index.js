@@ -28,7 +28,7 @@ function App() {
   return (
     <Fragment>
       <Head>
-        <title>Welcome to Next Evolution</title>
+        <title>Next Evolution</title>
         <meta
           name="description"
           content="This is a Next Application built by Noble"
