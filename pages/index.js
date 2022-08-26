@@ -12,7 +12,9 @@ function App() {
     setButtonState(buttonStateValues.loading);
     console.log("loading");
 
-    const response = await fetch("/api/randomBoolean");
+    const response = await fetch("/api/randomBoolean").catch((error) =>
+      console.log(error)
+    );
     const result = await response.json();
 
     if (result.message == true) {
