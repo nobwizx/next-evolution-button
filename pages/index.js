@@ -10,7 +10,7 @@ function App() {
 
   const addLoadingHandler = useCallback(async () => {
     setButtonState(buttonStateValues.loading);
-    console.log("loading");
+    //console.log("loading");
 
     const response = await fetch("/api/randomBoolean").catch((error) =>
       console.log(error)
@@ -19,10 +19,10 @@ function App() {
 
     if (result.message == true) {
       setButtonState(buttonStateValues.success);
-      console.log("success!");
+      //console.log("success!");
     } else {
       setButtonState(buttonStateValues.error);
-      console.log("failed!");
+      //console.log("failed!");
     }
     //console.log(result.message);
   }, []);
