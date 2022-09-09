@@ -8,7 +8,8 @@ async function handler(req, res) {
       return Math.random() < 0.5;
     }
 
-    await res.status(201).json({ message: await getRandomBoolean() });
+    res.status(200).json({ message: await getRandomBoolean() });
   }
 }
+
 export default handler;

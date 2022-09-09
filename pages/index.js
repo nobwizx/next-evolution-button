@@ -1,27 +1,8 @@
 import Head from "next/head";
-import { buttonStateValues } from "../data/buttonStateValues";
-import { useState } from "react";
-import { useCallback } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment } from "react";
+import EvoButton from "../components/ui/EvoButton";
 
 function App() {
-  const [buttonState, setButtonState] = useState(buttonStateValues.default);
-
-  const addLoadingHandler = useCallback(async () => {
-    setButtonState(buttonStateValues.loading);
-    //console.log("loading");
-
-    const response = await fetch("/api/randomBoolean").catch((errorMsg) =>
-      console.log(errorMsg)
-    );
-    const result = await response.json();
-
-    result.message
-      ? setButtonState(buttonStateValues.success)
-      : setButtonState(buttonStateValues.error);
-  }, []);
-
   return (
     <Fragment>
       <Head>
@@ -31,17 +12,7 @@ function App() {
           content="This is a Next Application built by Noble"
         />
       </Head>
-      <div id="button-container">
-        <button
-          className={buttonState.class}
-          onClick={addLoadingHandler}
-          disabled={buttonState.disabled}
-        >
-          <span className="button-text">{buttonState.text}</span>
-
-          <FontAwesomeIcon icon={buttonState.icon} />
-        </button>
-      </div>
+      <EvoButton />
     </Fragment>
   );
 }
